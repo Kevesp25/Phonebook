@@ -1,0 +1,130 @@
+### Se crea la clase ###  
+
+class Contacto:
+    def __init__(self, nombre, direccion, telefono, email):
+        self.nombre = nombre
+        self.direccion = direccion
+        self.telefono = telefono
+        self.email = email
+   
+### Metodos get de la clase ###
+    
+    def get_nombre(self):
+        return self.nombre
+    
+    def get_direccion(self):
+        return self.direccion
+        
+    def get_telefono(self):
+        return self.telefono
+        
+    def get_email(self):
+        return self.email
+        
+#### Metodos set de la clase ###
+    
+    def set_nombre(self, nombre):
+        self.nombre = nombre
+    
+    def set_direccion(self, direccion):
+        self.direccion = direccion
+        
+    def set_telefono(self, teledono):
+        self.telefono = telefono
+        
+    def set_email(self, email):
+        self.email = email
+
+    
+### Fin de la clase contacto ###
+
+### Menu ###
+
+
+def menu():
+    opcion = 0
+    while opcion < 1 or opcion > 5:
+        print('\n Bienvenido Usuario')
+        print('1) Crear una agenda.')
+        print('2) Crear Contacto.')
+        print('3) Buscar contacto.')
+        print('4) Eliminar contacto.')
+        print('5) Salir.')
+        opcion = int(input('\nSelecciona una opcion: '))
+        input('\nSeleccione enter para continuar: ')
+    return opcion
+
+### Nuevo contacto###
+def nuevo_contacto( nombre, direccion, telefono, email):
+    obj = Contacto(nombre, direccion, telefono, email)
+    agenda.append(obj)
+    print('\nContacto creado')
+    input('\nSeleccione enter para continuar: ')
+    
+### Buscar Contacto ###    
+def buscar(nombre):
+    lista = len(agenda) 
+    print('\nContactos existentes:  ', lista)
+    if lista == 0:
+        return '\nAgenda vacia'
+
+    for i in range(lista):
+        if nombre == agenda[i].get_nombre():
+            print('\n')
+            print(agenda[i].get_nombre())
+            print(agenda[i].get_direccion())
+            print(agenda[i].get_telefono())
+            print(agenda[i].get_email())
+            
+        else:
+            print('\nContacto no encontrado')
+    input('\nSeleccione enter para continuar: ')
+### Eliminar contacto   
+def eliminar(nombre):
+    lista = len(agenda)
+    for i in range (lista):
+        if nombre == agenda[i].get_nombre():
+            del agenda[i]
+            print('\nContacto Eliminado')
+        else: 
+            print('\nContacto no existe')
+    input('\nSeleccione enter para continuar: ')
+### Operaciones del menu ###
+
+
+while 1:
+    opc = menu()
+    print('\nElegiste:',opc)
+    if opc == 1:
+        agenda = []
+        print('\nAgenda creada')
+        
+    elif opc == 2:
+        if agenda == 0:
+            print('\nPrimero debe de crear una agenda')
+        else:
+            print('\nCreando contacto:')
+            nombre = input("Nombre: ")
+            direccion = input("Dirección: ")
+            telefono = input("Teléfono: ")
+            email = input("Email: ")
+            nuevo_contacto(nombre, direccion, telefono, email)
+
+    elif opc == 3:
+        if agenda == 0:
+            print('\nPrimero debe de crear una agenda')
+        
+        nombre = input("\nNombre del contacto que desea buscar: ")
+        buscar(nombre)
+
+    elif opc == 4:
+        if agenda == 0:
+            print('\nPrimero debe de crear una agenda')
+
+        nombre = input("Nombre del contacto que desea eliminar: ")
+        eliminar(nombre)
+        print('Contacto Eliminado')
+   
+    else:
+        exit ("Saliendo de la agenda\n")   
+
